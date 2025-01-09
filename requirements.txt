@@ -6,3 +6,4 @@ streamlit
 langchain_groq
 langchain-chroma
 langchain_ollama
+sentence-transformers
