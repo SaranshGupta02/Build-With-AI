@@ -2,8 +2,9 @@ langchain
 langchain_core
 langchain_community
 python-dotenv
+faiss-cpu
 streamlit
 langchain_groq
-langchain-chroma
-langchain_ollama
+langchain_huggingface
 sentence-transformers
+
