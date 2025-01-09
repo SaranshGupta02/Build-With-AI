@@ -4,21 +4,24 @@ import streamlit as st
 from dotenv import load_dotenv
 from langchain_groq import ChatGroq
 from langchain_community.vectorstores import FAISS
-from langchain_ollama import OllamaEmbeddings
+from langchain.embeddings import HuggingFaceEmbeddings
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.runnables import RunnablePassthrough
 
 # Load environment variables
 load_dotenv()
 groq_api_key = os.getenv("GROQ_API_KEY")
+huggingface_api_key=os.getenv("HF_TOKEN")
 st.write(f"API Key Loaded: {groq_api_key is not None}")
 # Set up the embeddings
 try:
-    embeddings = OllamaEmbeddings(model="gemma:2b")
+    # If you have a specific Hugging Face model, you can use it like this
+    embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2", 
+                                      api_key=huggingface_api_key)  # Add API key if needed
 except Exception as e:
     st.error(f"Failed to load embeddings: {e}")
     embeddings = None
-# Read the dataset
+
 data = pd.read_csv("Dataset.csv")
 
 # Convert to a format compatible with LangChain
