@@ -10,7 +10,8 @@ from langchain_core.runnables import RunnablePassthrough
 
 # Load environment variables
 load_dotenv()
-
+groq_api_key = os.getenv("GROQ_API_KEY")
+st.write(f"API Key Loaded: {groq_api_key is not None}")
 # Set up the embeddings
 try:
     embeddings = OllamaEmbeddings(model="gemma:2b")
