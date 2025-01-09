@@ -12,8 +12,11 @@ from langchain_core.runnables import RunnablePassthrough
 load_dotenv()
 
 # Set up the embeddings
-embeddings = OllamaEmbeddings(model="gemma:2b")
-
+try:
+    embeddings = OllamaEmbeddings(model="gemma:2b")
+except Exception as e:
+    st.error(f"Failed to load embeddings: {e}")
+    embeddings = None
 # Read the dataset
 data = pd.read_csv("Dataset.csv")
 
