@@ -12,7 +12,6 @@ from langchain_core.runnables import RunnablePassthrough
 load_dotenv()
 groq_api_key = os.getenv("GROQ_API_KEY")
 HF_TOKEN=os.getenv("HF_TOKEN")
-st.write(f"API Key Loaded: {groq_api_key is not None}")
 # Set up the embeddings
 try:
     # If you have a specific Hugging Face model, you can use it like this
